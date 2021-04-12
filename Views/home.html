@@ -1,0 +1,37 @@
+<main class="container-fluid flex-center">
+    <h1>Welcome home</h1>
+    <table class="siswa_list">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>NAME</td>
+                <td>EMAIL</td>
+                <td>PHONE</td>
+                <td>BATCH</td>
+                <td>DATE</td>
+                <td>ACTION</td>
+            </tr>
+          </thead>
+          <tbody>
+              {{#each data}} 
+                  <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.phone}}</td>
+                        <td>{{this.batch}}</td>
+                        <td name="{{this.date}}" class="date">{{this.date}}</td>
+                        <td>
+                            <form action="/hapus/{{this.id}}" method="post" class="buttonAction">
+                                <button type="submit">
+                                    <i class="material-icons" id="delete">delete</i>
+                                </button>
+                            </form>
+                        </td>
+                        <input type="hidden" class="res_date{{this.id}}" value="{{this.date}}">
+                  </tr>
+              {{/each}}
+          </tbody>
+    </table>
+    {{> formAbsen}}
+</main>
